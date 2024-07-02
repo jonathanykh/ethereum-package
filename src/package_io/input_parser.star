@@ -9,7 +9,7 @@ DEFAULT_EL_IMAGES = {
     "erigon": "ethpandaops/erigon:main",
     "nethermind": "nethermindeth/nethermind:master",
     "besu": "hyperledger/besu:latest",
-    "reth": "ghcr.io/paradigmxyz/reth",
+    "reth": "ghcr.io/jonathanykh/reth:latest",
     "ethereumjs": "ethpandaops/ethereumjs:master",
     "nimbus": "ethpandaops/nimbus-eth1:master",
 }
@@ -61,14 +61,7 @@ MEV_BOOST_SERVICE_NAME_PREFIX = "mev-boost"
 # Minimum number of validators required for a network to be valid is 64
 MIN_VALIDATORS = 64
 
-DEFAULT_ADDITIONAL_SERVICES = [
-    "tx_spammer",
-    "blob_spammer",
-    "el_forkmon",
-    "beacon_metrics_gazer",
-    "dora",
-    "prometheus_grafana",
-]
+DEFAULT_ADDITIONAL_SERVICES = []
 
 ATTR_TO_BE_SKIPPED_AT_ROOT = (
     "network_params",
@@ -268,6 +261,7 @@ def input_parser(plan, input_args):
                 "deposit_contract_address"
             ],
             seconds_per_slot=result["network_params"]["seconds_per_slot"],
+            genesis_gas_limit=result["network_params"]["genesis_gas_limit"],
             genesis_delay=result["network_params"]["genesis_delay"],
             max_per_epoch_activation_churn_limit=result["network_params"][
                 "max_per_epoch_activation_churn_limit"
@@ -778,6 +772,7 @@ def default_network_params():
         "network_id": "3151908",
         "deposit_contract_address": "0x4242424242424242424242424242424242424242",
         "seconds_per_slot": 12,
+        "genesis_gas_limit": 25000000,
         "num_validator_keys_per_node": 64,
         "preregistered_validator_keys_mnemonic": "giant issue aisle success illegal bike spike question tent bar rely arctic volcano long crawl hungry vocal artwork sniff fantasy very lucky have athlete",
         "preregistered_validator_count": 0,

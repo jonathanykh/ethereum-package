@@ -234,6 +234,7 @@ def get_config(
         "--metrics=0.0.0.0:{0}".format(METRICS_PORT_NUM),
         "--discovery.port={0}".format(discovery_port),
         "--port={0}".format(discovery_port),
+        "--rpc.gascap=10100100100",
     ]
 
     if network == constants.NETWORK_NAME.kurtosis:

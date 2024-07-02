@@ -1,0 +1,6 @@
+network_params:
+  network_id: "7357"
+  seconds_per_slot: 5
+  genesis_gas_limit: 10100100100
+participants:
+  - el_type: reth
